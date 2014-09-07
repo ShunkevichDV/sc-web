@@ -5,6 +5,7 @@ import secret
 import sockjs.tornado
 
 from handlers.main import MainHandler
+import handlers.auth as auth
 import handlers.api as api
 import ws
 
@@ -49,6 +50,10 @@ def main():
             (r"/api/info/tooltip/", api.InfoTooltip),
             
             (r"/api/user/", api.User),
+        
+            # authorization
+            (r"/auth/login", auth.LoginHandler),
+            (r"/auth/register", auth.RegisterHandler),
             ]
     
     rules.extend(socketRouter.urls)
